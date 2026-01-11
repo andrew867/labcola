@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab-Cola</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      window.tailwind = {
+        config: {
+          theme: {
+            extend: {
+              fontFamily: {
+                sans: ['Space Grotesk', 'sans-serif'],
+                mono: ['JetBrains Mono', 'monospace']
+              }
+            }
+          }
+        }
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="font-sans">
+    <div class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-red-950 text-white overflow-hidden">
+      <div id="bubble-layer" class="fixed inset-0 pointer-events-none overflow-hidden"></div>
+
+      <header class="relative z-10 p-8 bg-gradient-to-r from-red-900/50 to-slate-900/50 backdrop-blur-md border-b border-red-700/30">
+        <div class="max-w-6xl mx-auto">
+          <div class="flex items-center gap-4 mb-4">
+            <i data-lucide="beaker" class="w-12 h-12 text-red-500"></i>
+            <div>
+              <h1 class="text-5xl font-bold bg-gradient-to-r from-red-500 to-red-300 bg-clip-text text-transparent">
+                Lab-Cola
+              </h1>
+              <p class="text-slate-400 text-lg">Decoding the Chemistry Behind the World's Most Famous Beverage</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <nav class="sticky top-0 z-20 bg-slate-900/80 backdrop-blur-md border-b border-slate-700">
+        <div class="max-w-6xl mx-auto px-8 py-4 flex gap-4" role="tablist">
+          <button
+            type="button"
+            data-tab="overview"
+            role="tab"
+            aria-controls="tab-overview"
+            aria-selected="true"
+            class="px-6 py-2 rounded-lg font-semibold transition-all bg-red-600 text-white shadow-lg shadow-red-600/50"
+          >
+            Overview
+          </button>
+          <button
+            type="button"
+            data-tab="ingredients"
+            role="tab"
+            aria-controls="tab-ingredients"
+            aria-selected="false"
+            class="px-6 py-2 rounded-lg font-semibold transition-all bg-slate-800 text-slate-300 hover:bg-slate-700"
+          >
+            Ingredients
+          </button>
+          <button
+            type="button"
+            data-tab="process"
+            role="tab"
+            aria-controls="tab-process"
+            aria-selected="false"
+            class="px-6 py-2 rounded-lg font-semibold transition-all bg-slate-800 text-slate-300 hover:bg-slate-700"
+          >
+            Process
+          </button>
+          <button
+            type="button"
+            data-tab="science"
+            role="tab"
+            aria-controls="tab-science"
+            aria-selected="false"
+            class="px-6 py-2 rounded-lg font-semibold transition-all bg-slate-800 text-slate-300 hover:bg-slate-700"
+          >
+            Science
+          </button>
+        </div>
+      </nav>
+
+      <main class="relative z-10 max-w-6xl mx-auto p-8">
+        <section id="tab-overview" data-tab-panel="overview" role="tabpanel" class="space-y-8">
+          <div class="bg-gradient-to-br from-red-900/30 to-slate-900/30 backdrop-blur-md p-8 rounded-2xl border border-red-700/30">
+            <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
+              <i data-lucide="sparkles" class="text-yellow-400"></i>
+              The Quest for the Perfect Clone
+            </h2>
+            <p class="text-lg text-slate-300 mb-4">
+              After nearly a year of research, mass spectrometry analysis, and countless trials, this recipe represents
+              the closest publicly available replication of Coca-Cola's secret formula&mdash;without using coca leaf
+              extract.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+              <div class="bg-slate-800/50 p-4 rounded-lg">
+                <div class="text-4xl font-bold text-red-500">99%+</div>
+                <div class="text-slate-400">Known Composition</div>
+              </div>
+              <div class="bg-slate-800/50 p-4 rounded-lg">
+                <div class="text-4xl font-bold text-emerald-500">12+</div>
+                <div class="text-slate-400">Essential Oils</div>
+              </div>
+              <div class="bg-slate-800/50 p-4 rounded-lg">
+                <div class="text-4xl font-bold text-blue-500">5000L</div>
+                <div class="text-slate-400">Per 100mL Flavor Oil</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-yellow-900/20 border border-yellow-600/30 rounded-lg p-6">
+            <div class="flex items-start gap-3">
+              <i data-lucide="alert-triangle" class="w-6 h-6 text-yellow-500 flex-shrink-0 mt-1"></i>
+              <div>
+                <h3 class="font-bold text-yellow-400 mb-2">Safety First!</h3>
+                <ul class="text-slate-300 space-y-1 text-sm list-disc list-inside">
+                  <li>Wear gloves when handling chemicals</li>
+                  <li>Measure accurately using proper equipment</li>
+                  <li>Do not taste unmixed ingredients</li>
+                  <li>Use glass containers (no metal with phosphoric acid)</li>
+                  <li>Work in a well-ventilated area</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700">
+            <h3 class="text-2xl font-bold mb-6 text-emerald-400 text-center">Key Flavor Molecules Identified</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div class="flex flex-col items-center bg-slate-800/30 p-3 rounded-lg border border-slate-700">
+                <canvas data-structure="limonene" width="200" height="200" class="bg-slate-900 rounded-lg"></canvas>
+                <p class="mt-2 text-xs font-semibold text-slate-300 text-center">
+                  Limonene (C<sub>10</sub>H<sub>16</sub>)
+                </p>
+              </div>
+              <div class="flex flex-col items-center bg-slate-800/30 p-3 rounded-lg border border-slate-700">
+                <canvas data-structure="cinnamaldehyde" width="200" height="200" class="bg-slate-900 rounded-lg"></canvas>
+                <p class="mt-2 text-xs font-semibold text-slate-300 text-center">
+                  Cinnamaldehyde (C<sub>9</sub>H<sub>8</sub>O)
+                </p>
+              </div>
+              <div class="flex flex-col items-center bg-slate-800/30 p-3 rounded-lg border border-slate-700">
+                <canvas data-structure="terpineol" width="200" height="200" class="bg-slate-900 rounded-lg"></canvas>
+                <p class="mt-2 text-xs font-semibold text-slate-300 text-center">
+                  &alpha;-Terpineol (C<sub>10</sub>H<sub>18</sub>O)
+                </p>
+              </div>
+              <div class="flex flex-col items-center bg-slate-800/30 p-3 rounded-lg border border-slate-700">
+                <canvas data-structure="linalool" width="200" height="200" class="bg-slate-900 rounded-lg"></canvas>
+                <p class="mt-2 text-xs font-semibold text-slate-300 text-center">
+                  Linalool (C<sub>10</sub>H<sub>18</sub>O)
+                </p>
+              </div>
+              <div class="flex flex-col items-center bg-slate-800/30 p-3 rounded-lg border border-slate-700">
+                <canvas data-structure="eugenol" width="200" height="200" class="bg-slate-900 rounded-lg"></canvas>
+                <p class="mt-2 text-xs font-semibold text-slate-300 text-center">
+                  Eugenol (C<sub>10</sub>H<sub>12</sub>O<sub>2</sub>)
+                </p>
+              </div>
+              <div class="flex flex-col items-center bg-slate-800/30 p-3 rounded-lg border border-slate-700">
+                <canvas data-structure="vanillin" width="200" height="200" class="bg-slate-900 rounded-lg"></canvas>
+                <p class="mt-2 text-xs font-semibold text-slate-300 text-center">
+                  Vanillin (C<sub>8</sub>H<sub>8</sub>O<sub>3</sub>)
+                </p>
+              </div>
+              <div class="flex flex-col items-center bg-slate-800/30 p-3 rounded-lg border border-slate-700">
+                <canvas data-structure="caffeine" width="200" height="200" class="bg-slate-900 rounded-lg"></canvas>
+                <p class="mt-2 text-xs font-semibold text-slate-300 text-center">
+                  Caffeine (C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>)
+                </p>
+              </div>
+              <div class="flex flex-col items-center bg-slate-800/30 p-3 rounded-lg border border-slate-700">
+                <canvas data-structure="furfural" width="200" height="200" class="bg-slate-900 rounded-lg"></canvas>
+                <p class="mt-2 text-xs font-semibold text-slate-300 text-center">
+                  Furfural (C<sub>5</sub>H<sub>4</sub>O<sub>2</sub>)
+                </p>
+              </div>
+            </div>
+            <p class="mt-6 text-sm text-slate-400 text-center">
+              &#129514; Rotating 3D molecular structures of major components identified via GC-MS analysis
+            </p>
+          </div>
+        </section>
+
+        <section id="tab-ingredients" data-tab-panel="ingredients" role="tabpanel" class="space-y-8 hidden">
+          <h2 class="text-3xl font-bold mb-6">Complete Ingredients List</h2>
+
+          <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700">
+            <h3 class="text-2xl font-bold mb-4 text-red-400">7X Flavor Oil (100mL batch)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="p-4 rounded-lg border-2 border-yellow-500 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">Lemon Oil</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">45.8 mL</p>
+                <p class="text-sm text-slate-300">Primary citrus base</p>
+              </div>
+              <div class="p-4 rounded-lg border-2 border-green-500 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">Lime Oil</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">36.5 mL</p>
+                <p class="text-sm text-slate-300">Citrus complement</p>
+              </div>
+              <div class="p-4 rounded-lg border-2 border-orange-500 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">Orange Oil</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">1.2 mL</p>
+                <p class="text-sm text-slate-300">Subtle citrus notes</p>
+              </div>
+              <div class="p-4 rounded-lg border-2 border-teal-500 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">Tea Tree Oil</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">8 mL</p>
+                <p class="text-sm text-slate-300">50% 4-terpineol, fresh notes</p>
+              </div>
+              <div class="p-4 rounded-lg border-2 border-amber-600 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">Cassia Cinnamon Oil</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">4.5 mL</p>
+                <p class="text-sm text-slate-300">Spice character</p>
+              </div>
+              <div class="p-4 rounded-lg border-2 border-orange-700 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">Nutmeg Oil</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">2.7 mL</p>
+                <p class="text-sm text-slate-300">Warm spice notes</p>
+              </div>
+              <div class="p-4 rounded-lg border-2 border-lime-500 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">Coriander Oil</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">0.7 mL</p>
+                <p class="text-sm text-slate-300">S-linalool source</p>
+              </div>
+              <div class="p-4 rounded-lg border-2 border-cyan-500 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">Fenchol</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">0.6 mL</p>
+                <p class="text-sm text-slate-300">Fresh, camphor-like notes</p>
+              </div>
+            </div>
+            <p class="mt-4 text-slate-400 text-sm">
+              &#128161; Age this mixture for 1-2 days before use. Makes enough for 5000+ liters of soda!
+            </p>
+          </div>
+
+          <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700">
+            <h3 class="text-2xl font-bold mb-4 text-blue-400">7X Solution (1L batch)</h3>
+            <div class="p-4 rounded-lg border-2 border-blue-500 bg-opacity-10 backdrop-blur-sm">
+              <h4 class="font-bold text-white mb-2">7X Flavor Oil</h4>
+              <p class="text-2xl font-mono text-emerald-400 mb-2">20 mL</p>
+              <p class="text-sm text-slate-300">Diluted in food-grade 95% ethanol to 1 liter</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700">
+            <h3 class="text-2xl font-bold mb-4 text-purple-400">Water-Based Solution (1L batch)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="p-4 rounded-lg border-2 border-slate-500 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">Caffeine</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">9.65 g</p>
+                <p class="text-sm text-slate-300">~96mg per liter of soda</p>
+              </div>
+              <div class="p-4 rounded-lg border-2 border-indigo-500 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">Glycerin</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">175 g</p>
+                <p class="text-sm text-slate-300">Mouthfeel and texture</p>
+              </div>
+              <div class="p-4 rounded-lg border-2 border-red-500 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">85% Phosphoric Acid</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">45 mL</p>
+                <p class="text-sm text-slate-300">0.64g final concentration</p>
+              </div>
+              <div class="p-4 rounded-lg border-2 border-purple-700 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">Wine Tannins</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">8 g</p>
+                <p class="text-sm text-slate-300">Astringency, masks sweetness</p>
+              </div>
+              <div class="p-4 rounded-lg border-2 border-yellow-600 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">5% Vinegar</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">10 mL</p>
+                <p class="text-sm text-slate-300">Acetic acid (secret ingredient!)</p>
+              </div>
+              <div class="p-4 rounded-lg border-2 border-amber-500 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">Vanilla Extract</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">10 mL</p>
+                <p class="text-sm text-slate-300">Or 1mL of 9.5g/L vanillin solution</p>
+              </div>
+              <div class="p-4 rounded-lg border-2 border-orange-900 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">Shank's Caramel Color</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">320 mL</p>
+                <p class="text-sm text-slate-300">Color + furfural flavor</p>
+              </div>
+              <div class="md:col-span-2">
+                <div class="p-4 rounded-lg border-2 border-blue-400 bg-opacity-10 backdrop-blur-sm">
+                  <h4 class="font-bold text-white mb-2">Hot Water</h4>
+                  <p class="text-2xl font-mono text-emerald-400 mb-2">~200 mL</p>
+                  <p class="text-sm text-slate-300">Dilute to 1L total volume after mixing</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700">
+            <h3 class="text-2xl font-bold mb-4 text-emerald-400">Per Liter of Final Soda</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="p-4 rounded-lg border-2 border-pink-500 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">Cane Sugar</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">104 g</p>
+                <p class="text-sm text-slate-300">Converts to ~116g glucose/fructose when heated</p>
+              </div>
+              <div class="p-4 rounded-lg border-2 border-purple-500 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">Water-Based Solution</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">10 mL</p>
+                <p class="text-sm text-slate-300">All the non-sugar goodness</p>
+              </div>
+              <div class="p-4 rounded-lg border-2 border-blue-500 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">7X Solution</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">1 mL</p>
+                <p class="text-sm text-slate-300">Add a few extra drops to taste</p>
+              </div>
+              <div class="p-4 rounded-lg border-2 border-cyan-400 bg-opacity-10 backdrop-blur-sm">
+                <h4 class="font-bold text-white mb-2">Carbonated Water</h4>
+                <p class="text-2xl font-mono text-emerald-400 mb-2">to 1L</p>
+                <p class="text-sm text-slate-300">Cold, for diluting the syrup</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="tab-process" data-tab-panel="process" role="tabpanel" class="space-y-6 hidden">
+          <h2 class="text-3xl font-bold mb-6">Step-by-Step Process</h2>
+
+          <div class="mb-4 bg-slate-800 rounded-lg overflow-hidden border border-slate-700" data-accordion>
+            <button
+              type="button"
+              class="w-full p-4 flex items-center justify-between hover:bg-slate-700 transition-colors"
+              data-accordion-toggle
+              aria-expanded="false"
+            >
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center font-bold text-white">
+                  1
+                </div>
+                <i data-lucide="droplet" class="w-6 h-6 text-emerald-400"></i>
+                <h3 class="text-xl font-bold text-white">Prepare the 7X Flavor Oil</h3>
+              </div>
+              <div class="flex items-center">
+                <span data-chevron="open" class="hidden">
+                  <i data-lucide="chevron-down" class="text-slate-400"></i>
+                </span>
+                <span data-chevron="closed">
+                  <i data-lucide="chevron-right" class="text-slate-400"></i>
+                </span>
+              </div>
+            </button>
+            <div class="p-6 bg-slate-900 border-t border-slate-700 hidden" data-accordion-content>
+              <div class="space-y-4">
+                <p class="text-slate-300">
+                  This is the heart of the secret formula. Mix all essential oils in the exact proportions listed:
+                </p>
+                <div class="bg-slate-800 p-4 rounded-lg font-mono text-sm space-y-1">
+                  <div class="text-yellow-400">45.8 mL Lemon Oil</div>
+                  <div class="text-green-400">36.5 mL Lime Oil</div>
+                  <div class="text-orange-400">1.2 mL Orange Oil</div>
+                  <div class="text-teal-400">8 mL Tea Tree Oil</div>
+                  <div class="text-amber-400">4.5 mL Cassia Cinnamon Oil</div>
+                  <div class="text-orange-600">2.7 mL Nutmeg Oil</div>
+                  <div class="text-lime-400">0.7 mL Coriander Oil</div>
+                  <div class="text-cyan-400">0.6 mL Fenchol</div>
+                </div>
+                <div class="bg-blue-900/30 p-4 rounded-lg border border-blue-600/30">
+                  <p class="text-sm text-blue-300">
+                    <i data-lucide="info" class="w-4 h-4 inline mr-2"></i>
+                    <strong>Pro Tip:</strong> Let this mixture age for 1-2 days before proceeding. This aging step was
+                    included even in the original 1886 Pemberton recipe!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4 bg-slate-800 rounded-lg overflow-hidden border border-slate-700" data-accordion>
+            <button
+              type="button"
+              class="w-full p-4 flex items-center justify-between hover:bg-slate-700 transition-colors"
+              data-accordion-toggle
+              aria-expanded="false"
+            >
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center font-bold text-white">
+                  2
+                </div>
+                <i data-lucide="flask-conical" class="w-6 h-6 text-emerald-400"></i>
+                <h3 class="text-xl font-bold text-white">Create 7X Solution</h3>
+              </div>
+              <div class="flex items-center">
+                <span data-chevron="open" class="hidden">
+                  <i data-lucide="chevron-down" class="text-slate-400"></i>
+                </span>
+                <span data-chevron="closed">
+                  <i data-lucide="chevron-right" class="text-slate-400"></i>
+                </span>
+              </div>
+            </button>
+            <div class="p-6 bg-slate-900 border-t border-slate-700 hidden" data-accordion-content>
+              <div class="space-y-4">
+                <p class="text-slate-300">Dilute the flavor oil in alcohol to make it water-dispersible:</p>
+                <div class="bg-slate-800 p-4 rounded-lg">
+                  <p class="font-mono text-lg">20 mL 7X Flavor Oil + 95% Ethanol &rarr; 1L total volume</p>
+                </div>
+                <p class="text-sm text-slate-400">
+                  The final alcohol content in your soda will be 5x less than non-alcoholic beer&mdash;completely
+                  negligible! If alcohol is a concern, you can emulsify the oil with gum Arabic instead.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4 bg-slate-800 rounded-lg overflow-hidden border border-slate-700" data-accordion>
+            <button
+              type="button"
+              class="w-full p-4 flex items-center justify-between hover:bg-slate-700 transition-colors"
+              data-accordion-toggle
+              aria-expanded="false"
+            >
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center font-bold text-white">
+                  3
+                </div>
+                <i data-lucide="beaker" class="w-6 h-6 text-emerald-400"></i>
+                <h3 class="text-xl font-bold text-white">Prepare Water-Based Solution</h3>
+              </div>
+              <div class="flex items-center">
+                <span data-chevron="open" class="hidden">
+                  <i data-lucide="chevron-down" class="text-slate-400"></i>
+                </span>
+                <span data-chevron="closed">
+                  <i data-lucide="chevron-right" class="text-slate-400"></i>
+                </span>
+              </div>
+            </button>
+            <div class="p-6 bg-slate-900 border-t border-slate-700 hidden" data-accordion-content>
+              <div class="space-y-4">
+                <p class="text-slate-300">Mix all non-sugar ingredients in ~200mL hot water, then dilute to 1L:</p>
+                <ol class="space-y-2 text-slate-300 list-decimal list-inside">
+                  <li>Add each ingredient slowly, allowing full dissolution</li>
+                  <li>Order: vinegar, caffeine, glycerin, phosphoric acid, tannins, vanilla, caramel color</li>
+                  <li>Dilute to exactly 1 liter with water</li>
+                  <li>Store in a glass bottle</li>
+                </ol>
+                <div class="bg-red-900/30 p-4 rounded-lg border border-red-600/30">
+                  <i data-lucide="alert-triangle" class="w-4 h-4 inline mr-2 text-red-400"></i>
+                  <span class="text-sm text-red-300">85% phosphoric acid is corrosive! Wear gloves and eye protection.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4 bg-slate-800 rounded-lg overflow-hidden border border-slate-700" data-accordion>
+            <button
+              type="button"
+              class="w-full p-4 flex items-center justify-between hover:bg-slate-700 transition-colors"
+              data-accordion-toggle
+              aria-expanded="false"
+            >
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center font-bold text-white">
+                  4
+                </div>
+                <i data-lucide="thermometer" class="w-6 h-6 text-emerald-400"></i>
+                <h3 class="text-xl font-bold text-white">Make the Cola Syrup</h3>
+              </div>
+              <div class="flex items-center">
+                <span data-chevron="open" class="hidden">
+                  <i data-lucide="chevron-down" class="text-slate-400"></i>
+                </span>
+                <span data-chevron="closed">
+                  <i data-lucide="chevron-right" class="text-slate-400"></i>
+                </span>
+              </div>
+            </button>
+            <div class="p-6 bg-slate-900 border-t border-slate-700 hidden" data-accordion-content>
+              <div class="space-y-4">
+                <p class="text-slate-300">For 1 liter of finished soda:</p>
+                <ol class="space-y-3 text-slate-300">
+                  <li class="flex items-start gap-2">
+                    <span class="font-bold text-red-400">1.</span>
+                    <span>Dissolve <strong>104g cane sugar</strong> in minimal water in a glass dish</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="font-bold text-red-400">2.</span>
+                    <span>Add <strong>10 mL water-based solution</strong></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="font-bold text-red-400">3.</span>
+                    <span>Add <strong>1 mL 7X solution</strong> (add a few extra drops to taste)</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="font-bold text-red-400">4.</span>
+                    <span><strong>Heat until nearly boiling</strong> (microwave or stovetop)</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="font-bold text-red-400">5.</span>
+                    <span>Cover immediately to prevent flavor loss</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="font-bold text-red-400">6.</span>
+                    <span>Let cool completely</span>
+                  </li>
+                </ol>
+                <div class="bg-green-900/30 p-4 rounded-lg border border-green-600/30">
+                  <p class="text-sm text-green-300">
+                    <i data-lucide="sparkles" class="w-4 h-4 inline mr-2"></i>
+                    <strong>Why heat?</strong> Heating causes phosphoric acid to break down limonene and citral, and converts
+                    sucrose (cane sugar) into glucose and fructose. This creates the authentic flavor profile!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4 bg-slate-800 rounded-lg overflow-hidden border border-slate-700" data-accordion>
+            <button
+              type="button"
+              class="w-full p-4 flex items-center justify-between hover:bg-slate-700 transition-colors"
+              data-accordion-toggle
+              aria-expanded="false"
+            >
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center font-bold text-white">
+                  5
+                </div>
+                <i data-lucide="sparkles" class="w-6 h-6 text-emerald-400"></i>
+                <h3 class="text-xl font-bold text-white">Carbonate &amp; Enjoy</h3>
+              </div>
+              <div class="flex items-center">
+                <span data-chevron="open" class="hidden">
+                  <i data-lucide="chevron-down" class="text-slate-400"></i>
+                </span>
+                <span data-chevron="closed">
+                  <i data-lucide="chevron-right" class="text-slate-400"></i>
+                </span>
+              </div>
+            </button>
+            <div class="p-6 bg-slate-900 border-t border-slate-700 hidden" data-accordion-content>
+              <div class="space-y-4">
+                <ol class="space-y-3 text-slate-300">
+                  <li class="flex items-start gap-2">
+                    <span class="font-bold text-red-400">1.</span>
+                    <span>Dilute cooled syrup to <strong>1 liter with cold carbonated water</strong></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="font-bold text-red-400">2.</span>
+                    <span>Store in refrigerator for <strong>24 hours</strong> for best flavor</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="font-bold text-red-400">3.</span>
+                    <span>Serve over ice and enjoy your Lab-Cola!</span>
+                  </li>
+                </ol>
+                <div class="bg-yellow-900/30 p-4 rounded-lg border border-yellow-600/30">
+                  <i data-lucide="alert-triangle" class="w-4 h-4 inline mr-2 text-yellow-400"></i>
+                  <span class="text-sm text-yellow-300">
+                    Do NOT carbonate the finished soda in a SodaStream&mdash;it creates excessive foam that can harbor
+                    bacteria! Always carbonate plain water first, then mix with syrup.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="tab-science" data-tab-panel="science" role="tabpanel" class="space-y-8 hidden">
+          <h2 class="text-3xl font-bold mb-6">The Science Behind Lab-Cola</h2>
+
+          <div class="bg-gradient-to-br from-purple-900/30 to-slate-900/30 p-6 rounded-lg border border-purple-600/30">
+            <h3 class="text-2xl font-bold mb-4 text-purple-300">Mass Spectrometry Analysis</h3>
+            <p class="text-slate-300 mb-4">
+              Using gas chromatography-mass spectrometry (GC-MS), the major flavor compounds in Coca-Cola were identified:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="bg-slate-800/50 p-4 rounded-lg">
+                <h4 class="font-bold text-emerald-400 mb-2">&alpha;-Terpineol (Dominant)</h4>
+                <p class="text-sm text-slate-400">
+                  Forms from acid-catalyzed hydrolysis of limonene and pinene in citrus oils
+                </p>
+              </div>
+              <div class="bg-slate-800/50 p-4 rounded-lg">
+                <h4 class="font-bold text-yellow-400 mb-2">Limonene</h4>
+                <p class="text-sm text-slate-400">Primary citrus oil component, fresh lemon-lime character</p>
+              </div>
+              <div class="bg-slate-800/50 p-4 rounded-lg">
+                <h4 class="font-bold text-orange-400 mb-2">Cinnamaldehyde</h4>
+                <p class="text-sm text-slate-400">Main component of cinnamon oil, spicy-sweet notes</p>
+              </div>
+              <div class="bg-slate-800/50 p-4 rounded-lg">
+                <h4 class="font-bold text-red-400 mb-2">Furfural</h4>
+                <p class="text-sm text-slate-400">From caramel color, adds depth and complexity</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-blue-900/30 to-slate-900/30 p-6 rounded-lg border border-blue-600/30">
+            <h3 class="text-2xl font-bold mb-4 text-blue-300">Enantiomers Tell the Story</h3>
+            <p class="text-slate-300 mb-4">Linalool exists in two mirror forms: R and S. Analysis revealed:</p>
+            <div class="space-y-3">
+              <div class="bg-slate-800/50 p-4 rounded-lg">
+                <p class="text-slate-300">
+                  <span class="font-bold text-green-400">S-Linalool (Majority):</span> Found in coriander oil
+                  <span aria-hidden="true"> &#10003;</span>
+                </p>
+              </div>
+              <div class="bg-slate-800/50 p-4 rounded-lg">
+                <p class="text-slate-300">
+                  <span class="font-bold text-red-400">R-Linalool (Trace):</span> Found in lavender/neroli
+                  <span aria-hidden="true"> &#10007;</span>
+                </p>
+              </div>
+            </div>
+            <p class="text-sm text-slate-400 mt-4">
+              This proves coriander is IN the formula, while lavender and neroli are NOT!
+            </p>
+          </div>
+
+          <div class="bg-gradient-to-br from-green-900/30 to-slate-900/30 p-6 rounded-lg border border-green-600/30">
+            <h3 class="text-2xl font-bold mb-4 text-green-300">The Tannin Discovery</h3>
+            <p class="text-slate-300 mb-4">
+              The breakthrough came from understanding coca leaf extract as essentially a type of tea:
+            </p>
+            <ul class="space-y-2 text-slate-300 list-disc list-inside">
+              <li>Tannins provide dry, astringent taste that masks sweetness</li>
+              <li>Non-volatile compounds don't show up in gas-phase mass spec</li>
+              <li>Wine tannins (8g/L) replicate the mouthfeel perfectly</li>
+              <li>This was the missing piece that made replicas taste like "diet" versions</li>
+            </ul>
+          </div>
+
+          <div class="bg-gradient-to-br from-red-900/30 to-slate-900/30 p-6 rounded-lg border border-red-600/30">
+            <h3 class="text-2xl font-bold mb-4 text-red-300">Chemical Reactions During Heating</h3>
+            <div class="space-y-4">
+              <div class="bg-slate-800/50 p-4 rounded-lg">
+                <h4 class="font-bold text-yellow-400 mb-2">Sucrose Hydrolysis</h4>
+                <p class="text-sm text-slate-400 font-mono">
+                  Sucrose + H<sub>2</sub>O + H<sub>3</sub>PO<sub>4</sub> &rarr; Glucose + Fructose
+                </p>
+                <p class="text-sm text-slate-400 mt-2">
+                  104g sucrose converts to ~116g simple sugars, matching corn syrup sweetness
+                </p>
+              </div>
+              <div class="bg-slate-800/50 p-4 rounded-lg">
+                <h4 class="font-bold text-orange-400 mb-2">Terpene Transformation</h4>
+                <p class="text-sm text-slate-400">
+                  Limonene and citral break down under acidic conditions, creating &alpha;-terpineol and other flavor
+                  compounds
+                </p>
+              </div>
+              <div class="bg-slate-800/50 p-4 rounded-lg">
+                <h4 class="font-bold text-purple-400 mb-2">Ethyl Levulinate Formation</h4>
+                <p class="text-sm text-slate-400">
+                  Fructose + heat + acid &rarr; levulinic acid esters (detected in mass spec)
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-yellow-900/30 to-slate-900/30 p-6 rounded-lg border border-yellow-600/30">
+            <h3 class="text-2xl font-bold mb-4 text-yellow-300">Equipment &amp; Techniques</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="bg-slate-800/50 p-4 rounded-lg">
+                <i data-lucide="scale" class="w-8 h-8 text-emerald-400 mb-2"></i>
+                <h4 class="font-bold text-white mb-2">Precision Measurement</h4>
+                <p class="text-sm text-slate-400">
+                  Adjustable micropipettes (up to 1000&micro;L) ensure accurate dosing of essential oils at the microliter level
+                </p>
+              </div>
+              <div class="bg-slate-800/50 p-4 rounded-lg">
+                <i data-lucide="thermometer" class="w-8 h-8 text-red-400 mb-2"></i>
+                <h4 class="font-bold text-white mb-2">Controlled Heating</h4>
+                <p class="text-sm text-slate-400">
+                  Heat-resistant glassware prevents metal contamination from phosphoric acid while enabling crucial chemical
+                  reactions
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700">
+            <h3 class="text-2xl font-bold mb-4 text-cyan-300">Fun Facts</h3>
+            <ul class="space-y-3 text-slate-300">
+              <li class="flex items-start gap-3">
+                <i data-lucide="sparkles" class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1"></i>
+                <span>
+                  <strong>Vinegar is a secret ingredient!</strong> Acetic acid (from 5% vinegar) is the 3rd most prominent
+                  flavor by mass&mdash;about 10mL per batch.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="sparkles" class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1"></i>
+                <span>
+                  <strong>Tea tree oil mimics coca leaf!</strong> With 50% 4-terpineol, it recreates the fresh, green notes
+                  without controlled substances.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="sparkles" class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1"></i>
+                <span>
+                  <strong>The mass spectra are nearly identical!</strong> Lab-Cola's chemical fingerprint matches authentic
+                  Coca-Cola remarkably well.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="sparkles" class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1"></i>
+                <span>
+                  <strong>Coca-Cola never patented their recipe!</strong> Patents require public disclosure, so they rely on
+                  trade secret protection instead.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+
+      <footer class="relative z-10 mt-16 p-8 bg-slate-900/50 backdrop-blur-md border-t border-slate-700">
+        <div class="max-w-6xl mx-auto text-center">
+          <p class="text-slate-400 mb-4">
+            Based on the research by LabCoatz Sciences. This project is for educational purposes only.
+          </p>
+          <p class="text-sm text-slate-500">
+            Remember: This recipe uses essential oils and concentrated chemicals. Always prioritize safety, measure
+            carefully, and enjoy responsibly!
+          </p>
+          <div class="mt-6 flex items-center justify-center gap-4">
+            <i data-lucide="beaker" class="w-6 h-6 text-red-500"></i>
+            <span class="text-slate-400">Made with chemistry &amp; curiosity</span>
+            <i data-lucide="flask-conical" class="w-6 h-6 text-red-500"></i>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="script.js" defer></script>
+  </body>
+</html>
