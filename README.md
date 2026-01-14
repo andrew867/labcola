@@ -7,6 +7,7 @@ An interactive educational website that breaks down the complete process of repl
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 ## 🧪 About
+URL: https://zephyrsai.github.io/labcola/
 
 This project documents the scientific journey to chemically replicate Coca-Cola without using coca leaf extract. Through mass spectrometry analysis, chemical research papers, and countless trials, this recipe achieves a remarkably accurate clone of the world's most famous beverage.
 
